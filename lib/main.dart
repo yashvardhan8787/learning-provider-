@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:learning_provider/Favrouite/favourite_screen.dart';
+import 'package:learning_provider/Favrouite/login_screen.dart';
 import 'package:learning_provider/Favrouite/theme_controller_screen.dart';
+import 'package:learning_provider/Favrouite/value_notify_listeners.dart';
 import 'package:learning_provider/View/ExampleTwoScreen.dart';
 import 'package:learning_provider/View/MyHomePageScreen.dart';
+import 'package:learning_provider/provider/auth_provider.dart';
 import 'package:learning_provider/provider/count_provider.dart';
 import 'package:learning_provider/provider/exmaple_two_provider.dart';
 import 'package:learning_provider/provider/favourite_provider.dart';
@@ -23,7 +26,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<CountProvider>(create: (_) => CountProvider()),
         ChangeNotifierProvider<ExampleTwoProvider>(create: (_) => ExampleTwoProvider()),
         ChangeNotifierProvider<FavouriteProvider>(create: (_) => FavouriteProvider()),
-        ChangeNotifierProvider<ThemeChangerProvider>(create:(_)=>ThemeChangerProvider(), )
+        ChangeNotifierProvider<ThemeChangerProvider>(create:(_)=>ThemeChangerProvider()),
+        ChangeNotifierProvider<AuthProvider>(create:(_)=>AuthProvider()),
       ],
       child: Builder(builder: (context) {
         final themeChanger = Provider.of<ThemeChangerProvider>(context);
@@ -40,7 +44,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.cyan,
             useMaterial3: true,
           ),
-          home:ThemeControllerScreen(),
+          home:LoginScreen(),
         );
       },)
     );
